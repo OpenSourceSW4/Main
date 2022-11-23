@@ -3,6 +3,7 @@ import json
 import datetime
 import time
 import yaml
+from tkinter import *
 
 with open('config.yaml', encoding='UTF-8') as f:
     _cfg = yaml.load(f, Loader=yaml.FullLoader)
@@ -18,7 +19,7 @@ def send_message(msg):
     """디스코드 메세지 전송"""
     now = datetime.datetime.now()
     message = {"content": f"[{now.strftime('%Y-%m-%d %H:%M:%S')}] {str(msg)}"}
-    requests.post(DISCORD_WEBHOOK_URL, data=message)
+    #requests.post(DISCORD_WEBHOOK_URL, data=message)
     print(message)
 
 def get_access_token():
@@ -277,3 +278,4 @@ try:
 except Exception as e:
     send_message(f"[오류 발생]{e}")
     time.sleep(1)
+    
